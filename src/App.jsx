@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import SearchBar from './components/SearchBar';
@@ -7,7 +7,11 @@ import ResultsPanel from './components/ResultsPanel';
 import AnalysisResults from './components/AnalysisResults';
 import StatsBar from './components/StatsBar';
 import Features from './components/Features';
+import PricingSection from './components/PricingSection';
 import Footer from './components/Footer';
+import UsageBadge from './components/UsageBadge';
+import UpgradeModal from './components/UpgradeModal';
+import useUsageLimit from './hooks/useUsageLimit';
 import { searchIngredients, analyzeIngredientsList } from './data/ingredients';
 
 function App() {
@@ -19,9 +23,29 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [hasAnalyzed, setHasAnalyzed] = useState(false);
 
+  const pricingRef = useRef(null);
+
+  const {
+    remaining,
+    limit,
+    isLimitReached,
+    isPro,
+    showUpgrade,
+    recordSearch,
+    recordAnalysis,
+    closeUpgrade,
+    activatePro,
+  } = useUsageLimit();
+
+  const scrollToPricing = () => {
+    closeUpgrade();
+    pricingRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const handleSearch = (query) => {
     setSearchQuery(query);
     if (query.trim().length >= 2) {
+      if (!recordSearch()) return;
       const results = searchIngredients(query);
       setSearchResults(results);
       setHasSearched(true);
@@ -33,6 +57,7 @@ function App() {
 
   const handleAnalyze = () => {
     if (analyzeText.trim().length > 0) {
+      if (!recordAnalysis()) return;
       const result = analyzeIngredientsList(analyzeText);
       setAnalysisResult(result);
       setHasAnalyzed(true);
@@ -47,12 +72,17 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <Header onPricingClick={scrollToPricing} isPro={isPro} />
       <main className="flex-1">
         <Hero />
         <StatsBar />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 -mt-8 relative z-10">
+          {/* Usage Badge */}
+          <div className="mb-4">
+            <UsageBadge remaining={remaining} limit={limit} isPro={isPro} />
+          </div>
+
           {/* Tab Switcher */}
           <div className="flex justify-center mb-6">
             <div className="glass-strong rounded-2xl p-1.5 flex gap-1 shadow-lg">
@@ -82,7 +112,11 @@ function App() {
           {/* Search Tab */}
           {activeTab === 'search' && (
             <div className="animate-fade-in">
-              <SearchBar value={searchQuery} onChange={handleSearch} />
+              <SearchBar 
+                value={searchQuery} 
+                onChange={handleSearch} 
+                disabled={isLimitReached}
+              />
               {hasSearched && (
                 <ResultsPanel results={searchResults} query={searchQuery} />
               )}
@@ -97,6 +131,7 @@ function App() {
                 onChange={setAnalyzeText}
                 onAnalyze={handleAnalyze}
                 onClear={handleClearAnalysis}
+                disabled={isLimitReached}
               />
               {hasAnalyzed && analysisResult && (
                 <AnalysisResults result={analysisResult} />
@@ -106,8 +141,16 @@ function App() {
         </div>
 
         <Features />
+        <div ref={pricingRef}>
+          <PricingSection onActivatePro={activatePro} isPro={isPro} />
+        </div>
       </main>
       <Footer />
+
+      {/* Upgrade Modal */}
+      {showUpgrade && (
+        <UpgradeModal onClose={closeUpgrade} onScrollToPricing={scrollToPricing} />
+      )}
     </div>
   );
 }

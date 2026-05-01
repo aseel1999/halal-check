@@ -1,4 +1,4 @@
-export default function Header() {
+export default function Header({ onPricingClick, isPro }) {
   return (
     <header className="glass-strong sticky top-0 z-50 shadow-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
@@ -14,10 +14,25 @@ export default function Header() {
         
         <nav className="flex items-center gap-4">
           <a href="#features" className="text-sm text-gray-600 hover:text-emerald-600 transition-colors font-medium hidden sm:block">المميزات</a>
+          <button 
+            onClick={onPricingClick}
+            className="text-sm text-gray-600 hover:text-emerald-600 transition-colors font-medium hidden sm:block cursor-pointer"
+          >
+            الأسعار
+          </button>
           <a href="#about" className="text-sm text-gray-600 hover:text-emerald-600 transition-colors font-medium hidden sm:block">عن التطبيق</a>
-          <div className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full border border-emerald-200">
-            نسخة تجريبية
-          </div>
+          {isPro ? (
+            <div className="bg-gradient-to-l from-amber-100 to-yellow-50 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-full border border-amber-200 flex items-center gap-1">
+              <span>👑</span> مميز
+            </div>
+          ) : (
+            <button
+              onClick={onPricingClick}
+              className="bg-gradient-to-l from-emerald-500 to-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md shadow-emerald-200 hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 cursor-pointer"
+            >
+              ترقية 👑
+            </button>
+          )}
         </nav>
       </div>
     </header>

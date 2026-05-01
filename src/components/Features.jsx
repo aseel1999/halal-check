@@ -31,10 +31,10 @@ export default function Features() {
       gradient: 'from-pink-500 to-rose-500',
     },
     {
-      icon: '🆓',
-      title: 'مجاني تماماً',
-      description: 'بدون تسجيل، بدون اشتراك، بدون إعلانات مزعجة',
-      gradient: 'from-teal-500 to-emerald-500',
+      icon: '👑',
+      title: 'باقة مميزة',
+      description: 'ترقَّ للحصول على بحث بلا حدود، مسح الباركود، وحفظ المفضلة',
+      gradient: 'from-amber-500 to-yellow-500',
     },
   ];
 
