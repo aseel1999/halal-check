@@ -30,11 +30,9 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [hasAnalyzed, setHasAnalyzed] = useState(false);
 
-  // Barcode state
   const [barcodeResult, setBarcodeResult] = useState(null);
   const [barcodeAnalysis, setBarcodeAnalysis] = useState(null);
 
-  // UI state
   const [showFavorites, setShowFavorites] = useState(false);
   const [shareResult, setShareResult] = useState(null);
 
@@ -128,12 +126,9 @@ function App() {
         <Hero />
         <StatsBar />
         
-        {/* Ad Banner - Free tier only */}
-        {showAds && <AdBanner />}
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 -mt-8 relative z-10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
           {/* Usage Badge */}
-          <div className="mb-4">
+          <div className="mb-5">
             <UsageBadge 
               remainingSearches={remainingSearches} 
               searchLimit={searchLimit}
@@ -144,54 +139,26 @@ function App() {
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex justify-center mb-6">
-            <div className="glass-strong rounded-2xl p-1.5 flex gap-1 shadow-lg flex-wrap justify-center">
-              <button
-                onClick={() => setActiveTab('search')}
-                className={`px-5 py-3 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
-                  activeTab === 'search'
-                    ? 'bg-gradient-to-l from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
-                    : 'text-gray-600 hover:text-emerald-600 hover:bg-emerald-50'
-                }`}
-              >
+          <div className="flex justify-center mb-5">
+            <div className="bg-white border border-gray-200 rounded-xl p-1 flex gap-1 shadow-sm flex-wrap justify-center">
+              <TabButton active={activeTab === 'search'} onClick={() => setActiveTab('search')} color="emerald">
                 🔍 بحث
-              </button>
-              <button
-                onClick={() => setActiveTab('analyze')}
-                className={`px-5 py-3 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
-                  activeTab === 'analyze'
-                    ? 'bg-gradient-to-l from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
-                    : 'text-gray-600 hover:text-emerald-600 hover:bg-emerald-50'
-                }`}
-              >
+              </TabButton>
+              <TabButton active={activeTab === 'analyze'} onClick={() => setActiveTab('analyze')} color="emerald">
                 📋 تحليل
-              </button>
-              <button
+              </TabButton>
+              <TabButton
+                active={activeTab === 'barcode'}
                 onClick={() => setActiveTab('barcode')}
-                className={`px-5 py-3 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
-                  activeTab === 'barcode'
-                    ? 'bg-gradient-to-l from-blue-500 to-blue-600 text-white shadow-md shadow-blue-200'
-                    : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                } ${!canUseBarcode ? 'relative' : ''}`}
+                color="blue"
+                badge={!canUseBarcode ? 'PRO' : null}
               >
                 📷 باركود
-                {!canUseBarcode && (
-                  <span className="absolute -top-2 -left-2 bg-amber-400 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
-                    PRO
-                  </span>
-                )}
-              </button>
+              </TabButton>
               {canUseApi && (
-                <button
-                  onClick={() => setActiveTab('api')}
-                  className={`px-5 py-3 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
-                    activeTab === 'api'
-                      ? 'bg-gradient-to-l from-purple-500 to-indigo-600 text-white shadow-md shadow-purple-200'
-                      : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'
-                  }`}
-                >
+                <TabButton active={activeTab === 'api'} onClick={() => setActiveTab('api')} color="purple">
                   🔌 API
-                </button>
+                </TabButton>
               )}
             </div>
           </div>
@@ -263,13 +230,13 @@ function App() {
 
           {/* API Tab */}
           {activeTab === 'api' && canUseApi && (
-            <div className="animate-fade-in -mx-4 sm:-mx-6">
+            <div className="animate-fade-in">
               <APISection />
             </div>
           )}
         </div>
 
-        {/* Ad Banner bottom - Free tier only */}
+        {/* Ad Banner - only one, after content */}
         {showAds && <AdBanner />}
 
         <Features />
@@ -292,6 +259,28 @@ function App() {
         <ShareModal result={shareResult} onClose={() => setShareResult(null)} />
       )}
     </div>
+  );
+}
+
+function TabButton({ active, onClick, color, badge, children }) {
+  const colors = {
+    emerald: active ? 'bg-emerald-500 text-white shadow-sm' : 'text-gray-500 hover:text-emerald-600 hover:bg-emerald-50',
+    blue: active ? 'bg-blue-500 text-white shadow-sm' : 'text-gray-500 hover:text-blue-600 hover:bg-blue-50',
+    purple: active ? 'bg-purple-500 text-white shadow-sm' : 'text-gray-500 hover:text-purple-600 hover:bg-purple-50',
+  };
+
+  return (
+    <button
+      onClick={onClick}
+      className={`relative px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 cursor-pointer ${colors[color]}`}
+    >
+      {children}
+      {badge && (
+        <span className="absolute -top-1.5 -left-1.5 bg-amber-400 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full leading-none">
+          {badge}
+        </span>
+      )}
+    </button>
   );
 }
 
