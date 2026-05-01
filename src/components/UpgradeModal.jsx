@@ -1,68 +1,63 @@
 export default function UpgradeModal({ onClose, onScrollToPricing }) {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
       
       <div 
-        className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 animate-bounce-in"
+        className="relative bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 animate-bounce-in"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 left-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-500 cursor-pointer"
+          className="absolute top-3 left-3 w-7 h-7 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-400 text-sm cursor-pointer"
         >
           ✕
         </button>
 
-        {/* Icon */}
-        <div className="text-center mb-6">
-          <div className="w-20 h-20 bg-gradient-to-bl from-amber-400 to-amber-600 rounded-3xl flex items-center justify-center text-4xl shadow-lg shadow-amber-200 mx-auto mb-4">
+        <div className="text-center mb-5">
+          <div className="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3">
             👑
           </div>
-          <h2 className="text-2xl font-black text-gray-900 mb-2">
-            انتهت العمليات المجانية!
+          <h2 className="text-lg font-black text-gray-900 mb-1">
+            انتهت العمليات المجانية
           </h2>
-          <p className="text-gray-500 text-sm leading-relaxed">
-            لقد استنفدت عمليات البحث أو التحليل المجانية لهذا اليوم. ترقَّ للباقة المميزة!
+          <p className="text-gray-400 text-xs">
+            ترقَّ للمميزة واحصل على ميزات أكثر
           </p>
         </div>
 
-        {/* Features */}
-        <div className="space-y-3 mb-6">
+        <div className="space-y-2.5 mb-5">
           {[
-            { icon: '🔓', text: 'بحث غير محدود + 20 تحليل يومياً' },
-            { icon: '📷', text: 'مسح الباركود بالكاميرا' },
-            { icon: '⭐', text: 'حفظ المنتجات المفضلة' },
-            { icon: '📱', text: 'مشاركة النتائج عبر واتساب' },
+            { icon: '🔓', text: 'بحث غير محدود' },
+            { icon: '📷', text: 'مسح الباركود' },
+            { icon: '⭐', text: 'حفظ المفضلة' },
+            { icon: '📱', text: 'مشاركة واتساب' },
             { icon: '🚫', text: 'بدون إعلانات' },
           ].map((feature) => (
-            <div key={feature.text} className="flex items-center gap-3">
-              <span className="text-lg">{feature.icon}</span>
-              <span className="text-sm font-medium text-gray-700">{feature.text}</span>
+            <div key={feature.text} className="flex items-center gap-2.5">
+              <span className="text-base">{feature.icon}</span>
+              <span className="text-xs font-medium text-gray-600">{feature.text}</span>
             </div>
           ))}
         </div>
 
-        {/* CTA Buttons */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           <button
             onClick={onScrollToPricing}
-            className="w-full bg-gradient-to-l from-amber-500 to-amber-600 text-white py-4 rounded-2xl font-bold text-lg hover:from-amber-600 hover:to-amber-700 transition-all duration-300 shadow-lg shadow-amber-200 cursor-pointer"
+            className="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-bold text-sm transition-colors cursor-pointer"
           >
-            👑 ترقية للباقة المميزة — $4.99/شهر
+            ترقية — $4.99/شهر
           </button>
           <button
             onClick={onClose}
-            className="w-full text-gray-500 py-3 rounded-2xl font-medium text-sm hover:bg-gray-50 transition-colors cursor-pointer"
+            className="w-full text-gray-400 py-2 rounded-xl font-medium text-xs hover:bg-gray-50 transition-colors cursor-pointer"
           >
-            سأعود غداً — شكراً
+            سأعود غداً
           </button>
         </div>
 
-        {/* Timer hint */}
-        <p className="text-center text-xs text-gray-400 mt-4">
-          ⏰ تتجدد العمليات المجانية كل يوم عند منتصف الليل
+        <p className="text-center text-[10px] text-gray-300 mt-3">
+          تتجدد العمليات كل يوم عند منتصف الليل
         </p>
       </div>
     </div>

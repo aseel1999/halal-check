@@ -7,24 +7,21 @@ export default function StatsBar() {
   const mashboohCount = ingredientsDB.filter(i => i.status === MASHBOOH).length;
 
   const stats = [
-    { label: 'إجمالي المكونات', value: total, icon: '📊', color: 'text-gray-700' },
-    { label: 'حلال', value: halalCount, icon: '✅', color: 'text-emerald-600' },
-    { label: 'حرام', value: haramCount, icon: '❌', color: 'text-red-600' },
-    { label: 'مشتبه', value: mashboohCount, icon: '⚠️', color: 'text-amber-600' },
+    { label: 'إجمالي', value: total, bg: 'bg-gray-50', text: 'text-gray-700', border: 'border-gray-200' },
+    { label: 'حلال', value: halalCount, bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200' },
+    { label: 'حرام', value: haramCount, bg: 'bg-red-50', text: 'text-red-600', border: 'border-red-200' },
+    { label: 'مشتبه', value: mashboohCount, bg: 'bg-amber-50', text: 'text-amber-600', border: 'border-amber-200' },
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 -mt-12 mb-12 relative z-10">
-      <div className="glass-strong rounded-2xl shadow-xl shadow-gray-200/50 p-4 sm:p-6">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-2xl mb-1">{stat.icon}</div>
-              <div className={`text-2xl sm:text-3xl font-black ${stat.color}`}>{stat.value}</div>
-              <div className="text-xs text-gray-400 font-medium">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 -mt-10 mb-8 relative z-10">
+      <div className="grid grid-cols-4 gap-3">
+        {stats.map((stat) => (
+          <div key={stat.label} className={`${stat.bg} border ${stat.border} rounded-xl p-3 sm:p-4 text-center`}>
+            <div className={`text-xl sm:text-2xl font-black ${stat.text}`}>{stat.value}</div>
+            <div className="text-[11px] text-gray-400 font-bold mt-0.5">{stat.label}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
