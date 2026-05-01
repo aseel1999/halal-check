@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { getStatusInfo, HALAL, HARAM, MASHBOOH } from '../data/ingredients';
+import { saveFavorite, removeFavorite, isFavorite as checkIsFavorite } from '../hooks/useUsageLimit';
 
-export default function AnalysisResults({ result }) {
+export default function AnalysisResults({ result, canShare, canFavorite, onShare }) {
   const overallInfo = getStatusInfo(result.overall);
   
   const overallBg = {
@@ -61,6 +63,23 @@ export default function AnalysisResults({ result }) {
             <div className="text-xs text-white/70">غير معروف</div>
           </div>
         </div>
+
+        {/* Action Buttons */}
+        {(canShare || canFavorite) && (
+          <div className="flex justify-center gap-3 mt-5 pt-4 border-t border-white/20">
+            {canShare && (
+              <button
+                onClick={() => onShare && onShare(result)}
+                className="flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm px-5 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer"
+              >
+                <span>📤</span> مشاركة
+              </button>
+            )}
+            {canFavorite && (
+              <SaveAllButton results={result.results} />
+            )}
+          </div>
+        )}
       </div>
 
       {/* Individual Results */}
@@ -72,7 +91,7 @@ export default function AnalysisResults({ result }) {
         </div>
         <div className="divide-y divide-gray-100">
           {result.results.map((item, index) => (
-            <IngredientRow key={index} item={item} index={index} />
+            <IngredientRow key={index} item={item} index={index} canFavorite={canFavorite} />
           ))}
         </div>
       </div>
@@ -80,11 +99,66 @@ export default function AnalysisResults({ result }) {
   );
 }
 
-function IngredientRow({ item, index }) {
+function SaveAllButton({ results }) {
+  const [saved, setSaved] = useState(false);
+
+  const handleSaveAll = () => {
+    results.forEach((item) => {
+      if (item.found) {
+        saveFavorite({
+          id: item.ingredient.code || item.ingredient.name,
+          name: item.ingredient.name,
+          nameEn: item.ingredient.nameEn,
+          code: item.ingredient.code,
+          status: item.ingredient.status,
+          savedAt: new Date().toISOString(),
+        });
+      }
+    });
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  };
+
+  return (
+    <button
+      onClick={handleSaveAll}
+      className={`flex items-center gap-2 backdrop-blur-sm px-5 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+        saved ? 'bg-yellow-400/40' : 'bg-white/20 hover:bg-white/30'
+      }`}
+    >
+      <span>{saved ? '✓' : '⭐'}</span> {saved ? 'تم الحفظ!' : 'حفظ الكل'}
+    </button>
+  );
+}
+
+function IngredientRow({ item, index, canFavorite }) {
+  const [isFav, setIsFav] = useState(() => {
+    if (!item.found) return false;
+    return checkIsFavorite(item.ingredient.code || item.ingredient.name);
+  });
+
   const statusConfig = {
     halal: { bg: 'bg-emerald-50', text: 'text-emerald-700', badge: 'bg-emerald-100 text-emerald-800', icon: '✅', label: 'حلال' },
     haram: { bg: 'bg-red-50', text: 'text-red-700', badge: 'bg-red-100 text-red-800', icon: '❌', label: 'حرام' },
     mashbooh: { bg: 'bg-amber-50', text: 'text-amber-700', badge: 'bg-amber-100 text-amber-800', icon: '⚠️', label: 'مشتبه' },
+  };
+
+  const toggleFavorite = () => {
+    const id = item.ingredient.code || item.ingredient.name;
+    if (isFav) {
+      removeFavorite(id);
+      setIsFav(false);
+    } else {
+      saveFavorite({
+        id,
+        name: item.ingredient.name,
+        nameEn: item.ingredient.nameEn,
+        code: item.ingredient.code,
+        status: item.ingredient.status,
+        savedAt: new Date().toISOString(),
+      });
+      setIsFav(true);
+    }
   };
 
   if (!item.found) {
@@ -115,9 +189,22 @@ function IngredientRow({ item, index }) {
           <p className="text-[11px] text-gray-400 truncate">{item.ingredient.nameEn}</p>
         </div>
       </div>
-      <span className={`text-xs font-black px-3 py-1 rounded-lg ${config.badge} flex-shrink-0`}>
-        {config.label}
-      </span>
+      <div className="flex items-center gap-2 flex-shrink-0">
+        {canFavorite && (
+          <button
+            onClick={toggleFavorite}
+            className={`w-7 h-7 rounded-full flex items-center justify-center transition-all cursor-pointer ${
+              isFav ? 'bg-yellow-100 text-yellow-600' : 'bg-white/60 hover:bg-yellow-50 text-gray-400 hover:text-yellow-500'
+            }`}
+            title={isFav ? 'إزالة من المفضلة' : 'إضافة للمفضلة'}
+          >
+            <span className="text-sm">{isFav ? '⭐' : '☆'}</span>
+          </button>
+        )}
+        <span className={`text-xs font-black px-3 py-1 rounded-lg ${config.badge}`}>
+          {config.label}
+        </span>
+      </div>
     </div>
   );
 }

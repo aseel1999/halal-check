@@ -1,4 +1,11 @@
-export default function Header({ onPricingClick, isPro }) {
+export default function Header({ onPricingClick, currentPlan, onFavoritesClick, canUseFavorites }) {
+  const planBadges = {
+    pro: { label: 'المميزة', icon: '👑', bg: 'from-amber-100 to-yellow-50', text: 'text-amber-700', border: 'border-amber-200' },
+    business: { label: 'الأعمال', icon: '🏢', bg: 'from-purple-100 to-indigo-50', text: 'text-purple-700', border: 'border-purple-200' },
+  };
+
+  const badge = planBadges[currentPlan];
+
   return (
     <header className="glass-strong sticky top-0 z-50 shadow-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
@@ -12,7 +19,7 @@ export default function Header({ onPricingClick, isPro }) {
           </div>
         </div>
         
-        <nav className="flex items-center gap-4">
+        <nav className="flex items-center gap-2 sm:gap-4">
           <a href="#features" className="text-sm text-gray-600 hover:text-emerald-600 transition-colors font-medium hidden sm:block">المميزات</a>
           <button 
             onClick={onPricingClick}
@@ -20,10 +27,20 @@ export default function Header({ onPricingClick, isPro }) {
           >
             الأسعار
           </button>
-          <a href="#about" className="text-sm text-gray-600 hover:text-emerald-600 transition-colors font-medium hidden sm:block">عن التطبيق</a>
-          {isPro ? (
-            <div className="bg-gradient-to-l from-amber-100 to-yellow-50 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-full border border-amber-200 flex items-center gap-1">
-              <span>👑</span> مميز
+
+          {canUseFavorites && (
+            <button
+              onClick={onFavoritesClick}
+              className="w-9 h-9 rounded-full bg-amber-50 hover:bg-amber-100 border border-amber-200 flex items-center justify-center transition-colors cursor-pointer"
+              title="المفضلة"
+            >
+              <span className="text-base">⭐</span>
+            </button>
+          )}
+
+          {badge ? (
+            <div className={`bg-gradient-to-l ${badge.bg} ${badge.text} text-xs font-bold px-3 py-1.5 rounded-full border ${badge.border} flex items-center gap-1`}>
+              <span>{badge.icon}</span> {badge.label}
             </div>
           ) : (
             <button

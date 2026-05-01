@@ -21,18 +21,18 @@ export default function UpgradeModal({ onClose, onScrollToPricing }) {
             👑
           </div>
           <h2 className="text-2xl font-black text-gray-900 mb-2">
-            انتهت عمليات البحث المجانية!
+            انتهت العمليات المجانية!
           </h2>
           <p className="text-gray-500 text-sm leading-relaxed">
-            لقد استخدمت 5 عمليات بحث اليوم. ترقَّ للباقة المميزة للحصول على بحث بلا حدود!
+            لقد استنفدت عمليات البحث أو التحليل المجانية لهذا اليوم. ترقَّ للباقة المميزة!
           </p>
         </div>
 
         {/* Features */}
         <div className="space-y-3 mb-6">
           {[
-            { icon: '🔓', text: 'بحث وتحليل بلا حدود' },
-            { icon: '📷', text: 'مسح الباركود بالكاميرا (قريباً)' },
+            { icon: '🔓', text: 'بحث غير محدود + 20 تحليل يومياً' },
+            { icon: '📷', text: 'مسح الباركود بالكاميرا' },
             { icon: '⭐', text: 'حفظ المنتجات المفضلة' },
             { icon: '📱', text: 'مشاركة النتائج عبر واتساب' },
             { icon: '🚫', text: 'بدون إعلانات' },
