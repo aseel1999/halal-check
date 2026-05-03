@@ -14,7 +14,7 @@ export default function StatsBar() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 relative z-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-0 mb-16 relative z-10">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((stat) => (
           <div key={stat.label} className={`${stat.bg} border ${stat.border} rounded-2xl p-4 sm:p-5 text-center card-hover`}>

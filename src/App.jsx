@@ -142,7 +142,7 @@ function App() {
         <StatsBar />
         
         {/* Main content area */}
-        <div ref={searchRef} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-16">
+        <div ref={searchRef} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-20 mb-8">
           {/* Usage Badge */}
           <div className="mb-4">
             <UsageBadge 
@@ -261,19 +261,31 @@ function App() {
         {showAds && <AdBanner />}
 
         {/* Section divider */}
-        <div className="section-divider"></div>
+        <div className="section-divider my-4"></div>
 
         {/* Features / Trust Section */}
         <Features />
 
+        {/* Divider */}
+        <div className="section-divider my-4"></div>
+
         {/* Browse by Status */}
         <BrowseByStatus onSearch={handleBrowseSearch} />
+
+        {/* Divider */}
+        <div className="section-divider my-4"></div>
 
         {/* How to Use */}
         <HowToUse />
 
+        {/* Divider */}
+        <div className="section-divider my-4"></div>
+
         {/* CTA Section */}
         <CTASection onScrollToSearch={scrollToSearch} />
+
+        {/* Divider */}
+        <div className="section-divider my-4"></div>
 
         {/* Pricing */}
         <div ref={pricingRef}>

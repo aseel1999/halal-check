@@ -168,9 +168,9 @@ body {
 /* Section divider */
 .section-divider {
   height: 1px;
-  background: linear-gradient(to left, transparent, #e5e7eb, transparent);
+  background: linear-gradient(to left, transparent, #d1d5db, transparent);
   margin: 0 auto;
-  max-width: 80%;
+  max-width: 60%;
 }
 
 /* Card hover lift */

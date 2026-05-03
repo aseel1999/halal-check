@@ -53,16 +53,16 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {features.map((feature, index) => (
             <a
               key={feature.title}
               href="#"
-              className="bg-white border border-gray-100 rounded-2xl p-7 card-hover block animate-slide-up group"
+              className="bg-white border border-gray-100 rounded-2xl p-8 card-hover block animate-slide-up group text-center"
               style={{ animationDelay: `${index * 0.08}s` }}
               onClick={(e) => e.preventDefault()}
             >
-              <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-emerald-100 transition-colors">
+              <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-emerald-100 transition-colors mx-auto">
                 {feature.icon}
               </div>
               <h3 className="font-bold text-gray-800 text-base mb-3">{feature.title}</h3>
