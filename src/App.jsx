@@ -7,6 +7,9 @@ import ResultsPanel from './components/ResultsPanel';
 import AnalysisResults from './components/AnalysisResults';
 import StatsBar from './components/StatsBar';
 import Features from './components/Features';
+import BrowseByStatus from './components/BrowseByStatus';
+import HowToUse from './components/HowToUse';
+import CTASection from './components/CTASection';
 import PricingSection from './components/PricingSection';
 import Footer from './components/Footer';
 import UsageBadge from './components/UsageBadge';
@@ -37,6 +40,7 @@ function App() {
   const [shareResult, setShareResult] = useState(null);
 
   const pricingRef = useRef(null);
+  const searchRef = useRef(null);
 
   const {
     remainingSearches,
@@ -63,6 +67,10 @@ function App() {
   const scrollToPricing = () => {
     closeUpgrade();
     pricingRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToSearch = () => {
+    searchRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleSearch = (query) => {
@@ -114,21 +122,29 @@ function App() {
     setShareResult(result);
   };
 
+  const handleBrowseSearch = (term) => {
+    setActiveTab('search');
+    handleSearch(term);
+    scrollToSearch();
+  };
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header
         onPricingClick={scrollToPricing}
         currentPlan={currentPlan}
         onFavoritesClick={() => setShowFavorites(true)}
         canUseFavorites={canUseFavorites}
+        onFeaturesClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
       />
       <main className="flex-1">
         <Hero />
         <StatsBar />
         
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
+        {/* Main content area */}
+        <div ref={searchRef} className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10 pb-8">
           {/* Usage Badge */}
-          <div className="mb-5">
+          <div className="mb-4">
             <UsageBadge 
               remainingSearches={remainingSearches} 
               searchLimit={searchLimit}
@@ -150,7 +166,7 @@ function App() {
               <TabButton
                 active={activeTab === 'barcode'}
                 onClick={() => setActiveTab('barcode')}
-                color="blue"
+                color="emerald"
                 badge={!canUseBarcode ? 'PRO' : null}
               >
                 📷 باركود
@@ -172,7 +188,14 @@ function App() {
                 disabled={isSearchLimitReached}
               />
               {hasSearched && (
-                <ResultsPanel results={searchResults} query={searchQuery} />
+                <ResultsPanel
+                  results={searchResults}
+                  query={searchQuery}
+                  onSaveToFavorites={() => {}}
+                  canUseFavorites={canUseFavorites}
+                  onShare={() => handleShare(searchResults)}
+                  canShare={canUseWhatsapp}
+                />
               )}
             </div>
           )}
@@ -189,10 +212,9 @@ function App() {
               />
               {hasAnalyzed && analysisResult && (
                 <AnalysisResults
-                  result={analysisResult}
+                  results={analysisResult}
                   canShare={canUseWhatsapp}
-                  canFavorite={canUseFavorites}
-                  onShare={handleShare}
+                  onShare={() => handleShare(analysisResult)}
                 />
               )}
             </div>
@@ -217,10 +239,9 @@ function App() {
                   />
                   {barcodeAnalysis && (
                     <AnalysisResults
-                      result={barcodeAnalysis}
+                      results={barcodeAnalysis}
                       canShare={canUseWhatsapp}
-                      canFavorite={canUseFavorites}
-                      onShare={handleShare}
+                      onShare={() => handleShare(barcodeAnalysis)}
                     />
                   )}
                 </>
@@ -239,17 +260,35 @@ function App() {
         {/* Ad Banner - only one, after content */}
         {showAds && <AdBanner />}
 
+        {/* Section divider */}
+        <div className="section-divider"></div>
+
+        {/* Features / Trust Section */}
         <Features />
+
+        {/* Browse by Status */}
+        <BrowseByStatus onSearch={handleBrowseSearch} />
+
+        {/* How to Use */}
+        <HowToUse />
+
+        {/* CTA Section */}
+        <CTASection onScrollToSearch={scrollToSearch} />
+
+        {/* Pricing */}
         <div ref={pricingRef}>
           <PricingSection onActivatePlan={activatePlan} currentPlan={currentPlan} />
         </div>
       </main>
+
       <Footer />
 
       {/* Modals */}
-      {showUpgrade && (
-        <UpgradeModal onClose={closeUpgrade} onScrollToPricing={scrollToPricing} />
-      )}
+      <UpgradeModal
+        isOpen={showUpgrade}
+        onClose={closeUpgrade}
+        onUpgrade={scrollToPricing}
+      />
 
       {showFavorites && (
         <FavoritesPanel onClose={() => setShowFavorites(false)} />
@@ -265,7 +304,6 @@ function App() {
 function TabButton({ active, onClick, color, badge, children }) {
   const colors = {
     emerald: active ? 'bg-emerald-500 text-white shadow-sm' : 'text-gray-500 hover:text-emerald-600 hover:bg-emerald-50',
-    blue: active ? 'bg-blue-500 text-white shadow-sm' : 'text-gray-500 hover:text-blue-600 hover:bg-blue-50',
     purple: active ? 'bg-purple-500 text-white shadow-sm' : 'text-gray-500 hover:text-purple-600 hover:bg-purple-50',
   };
 

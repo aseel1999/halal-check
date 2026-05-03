@@ -42,10 +42,10 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
         'شارة حلال لمتجرك',
       ],
       icon: '👑',
-      color: 'border-emerald-300',
+      color: 'border-emerald-400',
       popular: true,
       btnActive: 'bg-emerald-100 text-emerald-700 cursor-default',
-      btnUpgrade: 'bg-emerald-500 text-white hover:bg-emerald-600 cursor-pointer',
+      btnUpgrade: 'bg-emerald-500 text-white hover:bg-emerald-600 cursor-pointer shadow-sm hover:shadow-md',
     },
     {
       key: 'business',
@@ -67,14 +67,17 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
       icon: '🏢',
       color: 'border-purple-300',
       btnActive: 'bg-purple-100 text-purple-700 cursor-default',
-      btnUpgrade: 'bg-purple-600 text-white hover:bg-purple-700 cursor-pointer',
+      btnUpgrade: 'bg-purple-600 text-white hover:bg-purple-700 cursor-pointer shadow-sm hover:shadow-md',
     },
   ];
 
   return (
-    <section id="pricing" className="py-16 px-4 sm:px-6">
+    <section id="pricing" className="py-16 px-4 sm:px-6 bg-gray-50/50">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full mb-4">
+            خطط التسعير
+          </div>
           <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">
             اختر الخطة <span className="gradient-text">المناسبة لك</span>
           </h2>
@@ -92,28 +95,28 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
                 className={`relative bg-white rounded-2xl border-2 ${
                   isActive ? plan.color + ' shadow-lg' : plan.popular ? plan.color + ' shadow-lg' : 'border-gray-200'
                 } p-6 transition-all duration-300 animate-slide-up ${
-                  plan.popular && !isActive ? 'md:-mt-3 md:mb-3' : ''
+                  plan.popular && !isActive ? 'md:-mt-2 md:mb-2' : ''
                 }`}
                 style={{ animationDelay: `${index * 0.12}s` }}
               >
                 {/* Badge */}
                 {plan.popular && !isActive && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-emerald-500 text-white text-[11px] font-bold px-4 py-1 rounded-full">
-                      الأكثر طلباً
+                    <span className="bg-emerald-500 text-white text-[11px] font-bold px-4 py-1 rounded-full shadow-sm">
+                      الأكثر طلباً 👑
                     </span>
                   </div>
                 )}
                 {isActive && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-blue-500 text-white text-[11px] font-bold px-4 py-1 rounded-full">
+                    <span className="bg-emerald-600 text-white text-[11px] font-bold px-4 py-1 rounded-full shadow-sm">
                       خطتك الحالية
                     </span>
                   </div>
                 )}
 
                 {/* Header */}
-                <div className="text-center mb-5 pt-1">
+                <div className="text-center mb-5 pt-2">
                   <div className="text-3xl mb-2">{plan.icon}</div>
                   <h3 className="font-black text-lg text-gray-900">{plan.name}</h3>
                   <p className="text-[11px] text-gray-400 mb-3">{plan.description}</p>
@@ -123,12 +126,15 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
                   </div>
                 </div>
 
+                {/* Divider */}
+                <div className="section-divider mb-5"></div>
+
                 {/* Features */}
                 <div className="space-y-2.5 mb-6">
                   {plan.features.map((text) => (
                     <div key={text} className="flex items-center gap-2.5">
-                      <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-2.5 h-2.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                      <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                         </svg>
                       </div>
@@ -137,8 +143,8 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
                   ))}
                   {plan.excluded.map((text) => (
                     <div key={text} className="flex items-center gap-2.5">
-                      <div className="w-4 h-4 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
-                        <span className="text-[8px] text-gray-400">—</span>
+                      <div className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        <span className="text-[9px] text-gray-400">—</span>
                       </div>
                       <span className="text-sm text-gray-300">{text}</span>
                     </div>
@@ -165,9 +171,17 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
           })}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 mt-10">
-          {['🔒 دفع آمن', '↩️ استرجاع 30 يوم', '🚫 إلغاء في أي وقت'].map((text) => (
-            <span key={text} className="text-xs text-gray-400">{text}</span>
+        {/* Trust badges */}
+        <div className="flex flex-wrap justify-center gap-8 mt-10">
+          {[
+            { icon: '🔒', text: 'دفع آمن ومشفّر' },
+            { icon: '↩️', text: 'استرجاع خلال 30 يوم' },
+            { icon: '🚫', text: 'إلغاء في أي وقت' },
+          ].map((item) => (
+            <div key={item.text} className="flex items-center gap-2">
+              <span className="text-base">{item.icon}</span>
+              <span className="text-xs text-gray-400 font-medium">{item.text}</span>
+            </div>
           ))}
         </div>
       </div>
