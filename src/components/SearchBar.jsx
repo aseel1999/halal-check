@@ -29,7 +29,7 @@ export default function SearchBar({ value, onChange, disabled }) {
       {!disabled && (
         <div className="mt-4 space-y-3">
           {/* Trending */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-2">
             <span className="text-xs text-gray-400 font-medium ml-1">رائج:</span>
             {trendingTags.map((tag) => (
               <button
@@ -43,7 +43,7 @@ export default function SearchBar({ value, onChange, disabled }) {
           </div>
 
           {/* Categories */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-2">
             <span className="text-xs text-gray-400 font-medium ml-1">فئات:</span>
             {categories.map((cat) => (
               <button

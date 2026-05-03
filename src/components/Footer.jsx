@@ -2,10 +2,10 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-24 sm:py-32">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 text-center sm:text-right">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 text-center">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
+            <div className="flex items-center justify-center gap-2.5 mb-4">
               <div className="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center">
                 <span className="text-lg">🌿</span>
               </div>
@@ -14,11 +14,11 @@ export default function Footer() {
                 <p className="text-[10px] text-gray-500">HalalCheck</p>
               </div>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs">
+            <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs mx-auto">
               نساعد المستهلكين المسلمين على اتخاذ قرارات غذائية مطمئنة من خلال التحقق الفوري من حالة المكونات الشرعية.
             </p>
             {/* Social Links */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               <SocialLink href="https://twitter.com" label="تويتر">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </SocialLink>
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
         
         {/* Bottom */}
-        <div className="border-t border-gray-800 pt-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="border-t border-gray-800 pt-5 flex flex-col items-center gap-2 text-center">
           <p className="text-xs sm:text-sm text-gray-500">
             © {new Date().getFullYear()} حلال تشيك. جميع الحقوق محفوظة.
           </p>

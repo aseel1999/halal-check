@@ -142,9 +142,9 @@ function App() {
         <StatsBar />
         
         {/* Main content area */}
-        <div ref={searchRef} className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 py-8 sm:py-12 mb-16">
+        <div ref={searchRef} className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 py-20 sm:py-28 mb-32">
           {/* Usage Badge */}
-          <div className="mb-4">
+          <div className="mb-4 w-full">
             <UsageBadge 
               remainingSearches={remainingSearches} 
               searchLimit={searchLimit}
@@ -155,7 +155,7 @@ function App() {
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex justify-center mb-5">
+          <div className="flex justify-center mb-5 w-full">
             <div className="bg-white border border-gray-200 rounded-xl p-1 flex gap-1 shadow-sm flex-wrap justify-center">
               <TabButton active={activeTab === 'search'} onClick={() => setActiveTab('search')} color="emerald">
                 🔍 بحث
@@ -181,7 +181,7 @@ function App() {
 
           {/* Search Tab */}
           {activeTab === 'search' && (
-            <div className="animate-fade-in">
+            <div className="animate-fade-in w-full">
               <SearchBar 
                 value={searchQuery} 
                 onChange={handleSearch} 
@@ -202,7 +202,7 @@ function App() {
 
           {/* Analyze Tab */}
           {activeTab === 'analyze' && (
-            <div className="animate-fade-in">
+            <div className="animate-fade-in w-full">
               <AnalyzeSection
                 value={analyzeText}
                 onChange={setAnalyzeText}
@@ -222,7 +222,7 @@ function App() {
 
           {/* Barcode Tab */}
           {activeTab === 'barcode' && (
-            <div className="animate-fade-in">
+            <div className="animate-fade-in w-full">
               {!barcodeResult ? (
                 <BarcodeScanner
                   onScan={handleBarcodeScan}
@@ -251,7 +251,7 @@ function App() {
 
           {/* API Tab */}
           {activeTab === 'api' && canUseApi && (
-            <div className="animate-fade-in">
+            <div className="animate-fade-in w-full">
               <APISection />
             </div>
           )}
