@@ -21,29 +21,27 @@ export default function BrowseByStatus({ onSearch }) {
   ];
 
   return (
-    <section className="py-12 px-4 sm:px-6 bg-gray-50/50">
-      <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-3">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-black text-gray-900 mb-1">
-              تصفح المكونات حسب النوع
-            </h2>
-            <p className="text-sm text-gray-400">
-              {ingredientsDB.length}+ مكوّن — تصفّح حسب الحالة أو الفئة
-            </p>
-          </div>
+    <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">
+            تصفح المكونات حسب النوع
+          </h2>
+          <p className="text-base sm:text-lg text-gray-500">
+            {ingredientsDB.length}+ مكوّن — تصفّح حسب الحالة أو الفئة
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {/* Status */}
-          <div>
-            <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">الحالة</h3>
-            <div className="flex flex-wrap gap-2">
+          <div className="text-center">
+            <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">الحالة</h3>
+            <div className="flex flex-wrap justify-center gap-3">
               {statuses.map((status) => (
                 <button
                   key={status.label}
                   onClick={() => onSearch(status.search)}
-                  className={`${status.color} border text-sm font-bold px-4 py-2 rounded-xl transition-colors cursor-pointer`}
+                  className={`${status.color} border text-base font-bold px-6 py-3 rounded-xl transition-colors cursor-pointer`}
                 >
                   {status.label} ({status.count})
                 </button>
@@ -52,14 +50,14 @@ export default function BrowseByStatus({ onSearch }) {
           </div>
 
           {/* Category */}
-          <div>
-            <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">الفئة</h3>
-            <div className="flex flex-wrap gap-2">
+          <div className="text-center">
+            <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">الفئة</h3>
+            <div className="flex flex-wrap justify-center gap-3">
               {categories.map((cat) => (
                 <button
                   key={cat.label}
                   onClick={() => onSearch(cat.search)}
-                  className="bg-white text-gray-600 border border-gray-200 text-sm font-medium px-4 py-2 rounded-xl hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 transition-colors cursor-pointer"
+                  className="bg-white text-gray-600 border border-gray-200 text-base font-medium px-6 py-3 rounded-xl hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 transition-colors cursor-pointer"
                 >
                   {cat.label}
                 </button>

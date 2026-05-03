@@ -142,7 +142,7 @@ function App() {
         <StatsBar />
         
         {/* Main content area */}
-        <div ref={searchRef} className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10 pb-8">
+        <div ref={searchRef} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-12">
           {/* Usage Badge */}
           <div className="mb-4">
             <UsageBadge 

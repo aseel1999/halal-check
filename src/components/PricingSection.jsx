@@ -72,21 +72,21 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
   ];
 
   return (
-    <section id="pricing" className="py-16 px-4 sm:px-6 bg-gray-50/50">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full mb-4">
+    <section id="pricing" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-sm font-bold px-4 py-2 rounded-full mb-5">
             خطط التسعير
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2">
+          <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">
             اختر الخطة <span className="gradient-text">المناسبة لك</span>
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base">
+          <p className="text-gray-500 text-base sm:text-lg">
             ابدأ مجاناً وترقَّ عندما تحتاج المزيد
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
           {plans.map((plan, index) => {
             const isActive = currentPlan === plan.key;
             return (
@@ -94,7 +94,7 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
                 key={plan.key}
                 className={`relative bg-white rounded-2xl border-2 ${
                   isActive ? plan.color + ' shadow-lg' : plan.popular ? plan.color + ' shadow-lg' : 'border-gray-200'
-                } p-6 transition-all duration-300 animate-slide-up ${
+                } p-7 sm:p-8 transition-all duration-300 animate-slide-up ${
                   plan.popular && !isActive ? 'md:-mt-2 md:mb-2' : ''
                 }`}
                 style={{ animationDelay: `${index * 0.12}s` }}
@@ -116,13 +116,13 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
                 )}
 
                 {/* Header */}
-                <div className="text-center mb-5 pt-2">
-                  <div className="text-3xl mb-2">{plan.icon}</div>
-                  <h3 className="font-black text-lg text-gray-900">{plan.name}</h3>
-                  <p className="text-[11px] text-gray-400 mb-3">{plan.description}</p>
+                <div className="text-center mb-6 pt-2">
+                  <div className="text-4xl mb-3">{plan.icon}</div>
+                  <h3 className="font-black text-xl text-gray-900">{plan.name}</h3>
+                  <p className="text-xs sm:text-sm text-gray-400 mb-4">{plan.description}</p>
                   <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-3xl font-black text-gray-900">${plan.price}</span>
-                    <span className="text-xs text-gray-400">/ {plan.period}</span>
+                    <span className="text-4xl font-black text-gray-900">${plan.price}</span>
+                    <span className="text-sm text-gray-400">/ {plan.period}</span>
                   </div>
                 </div>
 
@@ -130,7 +130,7 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
                 <div className="section-divider mb-5"></div>
 
                 {/* Features */}
-                <div className="space-y-2.5 mb-6">
+                <div className="space-y-3 mb-7">
                   {plan.features.map((text) => (
                     <div key={text} className="flex items-center gap-2.5">
                       <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
@@ -156,7 +156,7 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
                   onClick={() => {
                     if (!isActive) onActivatePlan(plan.key);
                   }}
-                  className={`w-full py-3 rounded-xl font-bold text-sm transition-all duration-200 ${
+                  className={`w-full py-3.5 rounded-xl font-bold text-base transition-all duration-200 ${
                     isActive ? plan.btnActive : plan.btnUpgrade
                   }`}
                 >
@@ -172,15 +172,15 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
         </div>
 
         {/* Trust badges */}
-        <div className="flex flex-wrap justify-center gap-8 mt-10">
+        <div className="flex flex-wrap justify-center gap-10 mt-12">
           {[
             { icon: '🔒', text: 'دفع آمن ومشفّر' },
             { icon: '↩️', text: 'استرجاع خلال 30 يوم' },
             { icon: '🚫', text: 'إلغاء في أي وقت' },
           ].map((item) => (
             <div key={item.text} className="flex items-center gap-2">
-              <span className="text-base">{item.icon}</span>
-              <span className="text-xs text-gray-400 font-medium">{item.text}</span>
+              <span className="text-lg">{item.icon}</span>
+              <span className="text-sm text-gray-500 font-medium">{item.text}</span>
             </div>
           ))}
         </div>

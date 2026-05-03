@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
@@ -14,7 +14,7 @@ export default function Footer() {
                 <p className="text-[10px] text-gray-500">HalalCheck</p>
               </div>
             </div>
-            <p className="text-xs text-gray-400 leading-relaxed mb-5 max-w-xs">
+            <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs">
               نساعد المستهلكين المسلمين على اتخاذ قرارات غذائية مطمئنة من خلال التحقق الفوري من حالة المكونات الشرعية.
             </p>
             {/* Social Links */}
@@ -71,8 +71,8 @@ export default function Footer() {
         {/* Disclaimer */}
         <div className="border-t border-gray-800 pt-6 mb-6">
           <div className="bg-gray-800/50 rounded-xl p-4">
-            <h4 className="text-xs font-bold text-amber-400 mb-1.5">تنويه مهم</h4>
-            <p className="text-[11px] text-gray-400 leading-relaxed">
+            <h4 className="text-sm font-bold text-amber-400 mb-2">تنويه مهم</h4>
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
               هذا التطبيق أداة استرشادية وليس فتوى شرعية رسمية. للحالات الخاصة والمعقدة، يُرجى الرجوع إلى العلماء المختصين والهيئات الشرعية المعتمدة في بلدك.
             </p>
           </div>
@@ -80,10 +80,10 @@ export default function Footer() {
         
         {/* Bottom */}
         <div className="border-t border-gray-800 pt-5 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-[11px] text-gray-600">
+          <p className="text-xs sm:text-sm text-gray-500">
             © {new Date().getFullYear()} حلال تشيك. جميع الحقوق محفوظة.
           </p>
-          <p className="text-[11px] text-gray-600">
+          <p className="text-xs sm:text-sm text-gray-500">
             صُنع بـ ❤️ لخدمة المسلمين حول العالم
           </p>
         </div>
@@ -109,7 +109,7 @@ function SocialLink({ href, label, children }) {
 function FooterLink({ href, label }) {
   return (
     <li>
-      <a href={href} className="text-xs text-gray-400 hover:text-emerald-400 transition-colors">
+      <a href={href} className="text-sm text-gray-400 hover:text-emerald-400 transition-colors">
         {label}
       </a>
     </li>
