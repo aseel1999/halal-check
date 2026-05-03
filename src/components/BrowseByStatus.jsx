@@ -21,18 +21,18 @@ export default function BrowseByStatus({ onSearch }) {
   ];
 
   return (
-    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">
+    <section className="py-28 sm:py-36 lg:py-44 px-6 sm:px-8 lg:px-12">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6">
             تصفح المكونات حسب النوع
           </h2>
-          <p className="text-base sm:text-lg text-gray-500">
+          <p className="text-lg sm:text-xl text-gray-500 leading-relaxed">
             {ingredientsDB.length}+ مكوّن — تصفّح حسب الحالة أو الفئة
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-16">
           {/* Status */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">الحالة</h3>

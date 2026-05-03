@@ -34,32 +34,32 @@ export default function HowToUse() {
   ];
 
   return (
-    <section id="how-to-use" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-sm font-bold px-4 py-2 rounded-full mb-5">
+    <section id="how-to-use" className="py-28 sm:py-36 lg:py-44 px-6 sm:px-8 lg:px-12 bg-gray-50/60">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-sm font-bold px-5 py-2.5 rounded-full mb-8">
             كيف تبدأ
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6">
             ثلاث طرق للتحقق من أي مكوّن
           </h2>
-          <p className="text-gray-500 text-base sm:text-lg">
+          <p className="text-gray-500 text-lg sm:text-xl leading-relaxed">
             جديد هنا؟ إليك كيف تعمل كل طريقة — اختر الأنسب لك.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
           {methods.map((method, index) => (
             <div
               key={method.title}
-              className="bg-white border border-gray-100 rounded-2xl p-8 card-hover animate-slide-up group text-center"
+              className="bg-white border border-gray-100 rounded-2xl p-8 sm:p-10 card-hover animate-slide-up group text-center"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-100 transition-colors mx-auto">
                 {method.icon}
               </div>
-              <h3 className="font-bold text-gray-900 text-lg mb-3">{method.title}</h3>
-              <p className="text-sm sm:text-base text-gray-500 leading-relaxed mb-5">{method.description}</p>
+              <h3 className="font-bold text-gray-900 text-xl mb-4">{method.title}</h3>
+              <p className="text-base text-gray-500 leading-relaxed mb-6">{method.description}</p>
               <span className="inline-flex items-center gap-1.5 text-emerald-600 text-sm font-bold group-hover:gap-2.5 transition-all">
                 {method.link}
                 <svg className="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">

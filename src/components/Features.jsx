@@ -39,16 +39,16 @@ export default function Features() {
   ];
 
   return (
-    <section id="features" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
+    <section id="features" className="py-28 sm:py-36 lg:py-44 px-6 sm:px-8 lg:px-12 bg-gray-50/60">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-sm font-bold px-4 py-2 rounded-full mb-5">
+        <div className="text-center mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-sm font-bold px-5 py-2.5 rounded-full mb-8">
             لماذا تثق بنا
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6">
             مبني لفحص حلال <span className="gradient-text">سريع ودقيق</span>
           </h2>
-          <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
+          <p className="text-gray-500 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
             أحكام واضحة ومصادر موثوقة وخصوصية تامة
           </p>
         </div>
@@ -58,15 +58,15 @@ export default function Features() {
             <a
               key={feature.title}
               href="#"
-              className="bg-white border border-gray-100 rounded-2xl p-8 card-hover block animate-slide-up group text-center"
+              className="bg-white border border-gray-100 rounded-2xl p-8 sm:p-10 card-hover block animate-slide-up group text-center"
               style={{ animationDelay: `${index * 0.08}s` }}
               onClick={(e) => e.preventDefault()}
             >
               <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-emerald-100 transition-colors mx-auto">
                 {feature.icon}
               </div>
-              <h3 className="font-bold text-gray-800 text-base mb-3">{feature.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{feature.description}</p>
+              <h3 className="font-bold text-gray-800 text-lg mb-4">{feature.title}</h3>
+              <p className="text-base text-gray-500 leading-relaxed">{feature.description}</p>
             </a>
           ))}
         </div>

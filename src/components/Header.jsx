@@ -12,7 +12,7 @@ export default function Header({ onPricingClick, currentPlan, onFavoritesClick, 
 
   return (
     <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group">
@@ -26,7 +26,7 @@ export default function Header({ onPricingClick, currentPlan, onFavoritesClick, 
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-3">
+          <nav className="hidden md:flex items-center gap-1 sm:gap-2">
             <NavLink href="#" label="الرئيسية" active />
             <NavLink href="#features" label="المميزات" onClick={onFeaturesClick} />
             <NavLink href="#how-to-use" label="كيف يعمل" />

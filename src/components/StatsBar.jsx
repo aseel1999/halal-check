@@ -14,13 +14,13 @@ export default function StatsBar() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-0 mb-16 relative z-10">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+    <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-12 sm:py-16 relative z-10">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-8">
         {stats.map((stat) => (
-          <div key={stat.label} className={`${stat.bg} border ${stat.border} rounded-2xl p-4 sm:p-5 text-center card-hover`}>
-            <div className="text-2xl mb-1">{stat.icon}</div>
-            <div className={`text-2xl sm:text-3xl font-black ${stat.text}`}>{stat.value}</div>
-            <div className="text-xs sm:text-sm text-gray-500 font-medium mt-1">{stat.label}</div>
+          <div key={stat.label} className={`${stat.bg} border ${stat.border} rounded-2xl p-6 sm:p-8 text-center card-hover`}>
+            <div className="text-3xl mb-2">{stat.icon}</div>
+            <div className={`text-3xl sm:text-4xl font-black ${stat.text}`}>{stat.value}</div>
+            <div className="text-sm sm:text-base text-gray-500 font-medium mt-2">{stat.label}</div>
           </div>
         ))}
       </div>

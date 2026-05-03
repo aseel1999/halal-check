@@ -72,21 +72,21 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
   ];
 
   return (
-    <section id="pricing" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-sm font-bold px-4 py-2 rounded-full mb-5">
+    <section id="pricing" className="py-28 sm:py-36 lg:py-44 px-6 sm:px-8 lg:px-12 bg-gray-50/60">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-sm font-bold px-5 py-2.5 rounded-full mb-8">
             خطط التسعير
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6">
             اختر الخطة <span className="gradient-text">المناسبة لك</span>
           </h2>
-          <p className="text-gray-500 text-base sm:text-lg">
+          <p className="text-gray-500 text-lg sm:text-xl leading-relaxed">
             ابدأ مجاناً وترقَّ عندما تحتاج المزيد
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 items-start">
           {plans.map((plan, index) => {
             const isActive = currentPlan === plan.key;
             return (
@@ -127,7 +127,7 @@ export default function PricingSection({ onActivatePlan, currentPlan }) {
                 </div>
 
                 {/* Divider */}
-                <div className="section-divider mb-5"></div>
+                <div className="h-px bg-gray-100 mb-5"></div>
 
                 {/* Features */}
                 <div className="space-y-3 mb-7">

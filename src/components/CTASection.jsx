@@ -1,17 +1,17 @@
 export default function CTASection({ onScrollToSearch }) {
   return (
-    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-3xl p-10 sm:p-16 text-center text-white relative overflow-hidden">
+    <section className="py-28 sm:py-36 lg:py-44 px-6 sm:px-8 lg:px-12">
+      <div className="max-w-5xl mx-auto">
+        <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-3xl p-12 sm:p-20 text-center text-white relative overflow-hidden">
           {/* Decorative circles */}
           <div className="absolute top-0 left-0 w-40 h-40 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-56 h-56 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
           
           <div className="relative z-10">
-            <h2 className="text-3xl sm:text-4xl font-black mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6">
               جاهز تفحص مكوّن؟
             </h2>
-            <p className="text-emerald-100 text-base sm:text-lg mb-10 max-w-lg mx-auto">
+            <p className="text-emerald-100 text-lg sm:text-xl mb-12 max-w-xl mx-auto leading-relaxed">
               ابحث عن أي إضافة غذائية أو امسح غلاف المنتج — واحصل فوراً على الحكم الشرعي.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
