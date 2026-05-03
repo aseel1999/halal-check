@@ -14,8 +14,8 @@ export default function StatsBar() {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-24 sm:py-32 relative z-10">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-8">
+    <div className="max-w-4xl mx-auto px-10 sm:px-16 lg:px-20 py-24 sm:py-32 relative z-10">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10">
         {stats.map((stat) => (
           <div key={stat.label} className={`${stat.bg} border ${stat.border} rounded-2xl p-6 sm:p-8 text-center card-hover`}>
             <div className="text-3xl mb-2">{stat.icon}</div>

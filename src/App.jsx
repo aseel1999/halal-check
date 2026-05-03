@@ -267,7 +267,11 @@ function App() {
         <BrowseByStatus onSearch={handleBrowseSearch} />
 
         {/* How to Use */}
-        <HowToUse />
+        <HowToUse
+          onSearchClick={() => { setActiveTab('search'); scrollToSearch(); }}
+          onAnalyzeClick={() => { setActiveTab('analyze'); scrollToSearch(); }}
+          onBarcodeClick={() => { setActiveTab('barcode'); scrollToSearch(); }}
+        />
 
         {/* CTA Section */}
         <CTASection onScrollToSearch={scrollToSearch} />

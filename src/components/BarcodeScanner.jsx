@@ -82,7 +82,14 @@ export default function BarcodeScanner({ onScan, onClose, isPro }) {
           </div>
         </div>
         <button
-          onClick={onClose}
+          onClick={() => {
+            if (scannerRef.current) {
+              scannerRef.current.stop().catch(() => {});
+              scannerRef.current = null;
+            }
+            setScanning(false);
+            onClose();
+          }}
           className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-500 cursor-pointer"
         >
           ✕

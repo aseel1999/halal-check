@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-white text-gray-900 border-t border-gray-200">
       <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-24 sm:py-32">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 text-center">
           {/* Brand */}
@@ -10,11 +10,11 @@ export default function Footer() {
                 <span className="text-lg">🌿</span>
               </div>
               <div>
-                <h3 className="font-bold text-sm">حلال تشيك</h3>
-                <p className="text-[10px] text-gray-500">HalalCheck</p>
+                <h3 className="font-bold text-sm text-gray-900">حلال تشيك</h3>
+                <p className="text-[10px] text-gray-400">HalalCheck</p>
               </div>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs mx-auto">
+            <p className="text-sm text-gray-600 leading-relaxed mb-5 max-w-xs mx-auto">
               نساعد المستهلكين المسلمين على اتخاذ قرارات غذائية مطمئنة من خلال التحقق الفوري من حالة المكونات الشرعية.
             </p>
             {/* Social Links */}
@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Product Links */}
           <div>
-            <h4 className="font-bold text-sm mb-4 text-white">المنتج</h4>
+            <h4 className="font-bold text-sm mb-4 text-gray-900">المنتج</h4>
             <ul className="space-y-2.5">
               <FooterLink href="#" label="البحث عن المكونات" />
               <FooterLink href="#" label="تحليل القوائم" />
@@ -47,7 +47,7 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-bold text-sm mb-4 text-white">الشركة</h4>
+            <h4 className="font-bold text-sm mb-4 text-gray-900">الشركة</h4>
             <ul className="space-y-2.5">
               <FooterLink href="#" label="قصتنا" />
               <FooterLink href="#" label="الأسئلة الشائعة" />
@@ -58,7 +58,7 @@ export default function Footer() {
 
           {/* Guides */}
           <div>
-            <h4 className="font-bold text-sm mb-4 text-white">أدلة ومقالات</h4>
+            <h4 className="font-bold text-sm mb-4 text-gray-900">أدلة ومقالات</h4>
             <ul className="space-y-2.5">
               <FooterLink href="#" label="دليل E-codes الحلال" />
               <FooterLink href="#" label="هل E471 حلال؟" />
@@ -69,17 +69,17 @@ export default function Footer() {
         </div>
 
         {/* Disclaimer */}
-        <div className="border-t border-gray-800 pt-6 mb-6">
-          <div className="bg-gray-800/50 rounded-xl p-4">
-            <h4 className="text-sm font-bold text-amber-400 mb-2">تنويه مهم</h4>
-            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
+        <div className="border-t border-gray-200 pt-6 mb-6">
+          <div className="bg-gray-50 rounded-xl p-4">
+            <h4 className="text-sm font-bold text-amber-600 mb-2">تنويه مهم</h4>
+            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
               هذا التطبيق أداة استرشادية وليس فتوى شرعية رسمية. للحالات الخاصة والمعقدة، يُرجى الرجوع إلى العلماء المختصين والهيئات الشرعية المعتمدة في بلدك.
             </p>
           </div>
         </div>
         
         {/* Bottom */}
-        <div className="border-t border-gray-800 pt-5 flex flex-col items-center gap-2 text-center">
+        <div className="border-t border-gray-200 pt-5 flex flex-col items-center gap-2 text-center">
           <p className="text-xs sm:text-sm text-gray-500">
             © {new Date().getFullYear()} حلال تشيك. جميع الحقوق محفوظة.
           </p>
@@ -99,7 +99,7 @@ function SocialLink({ href, label, children }) {
       aria-label={label}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-8 h-8 rounded-lg bg-gray-800 hover:bg-emerald-600 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+      className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-emerald-500 flex items-center justify-center text-gray-500 hover:text-white transition-colors"
     >
       {children}
     </a>
@@ -109,7 +109,7 @@ function SocialLink({ href, label, children }) {
 function FooterLink({ href, label }) {
   return (
     <li>
-      <a href={href} className="text-sm text-gray-400 hover:text-emerald-400 transition-colors">
+      <a href={href} className="text-sm text-gray-600 hover:text-emerald-600 transition-colors">
         {label}
       </a>
     </li>

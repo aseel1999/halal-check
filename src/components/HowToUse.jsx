@@ -1,4 +1,4 @@
-export default function HowToUse() {
+export default function HowToUse({ onSearchClick, onAnalyzeClick, onBarcodeClick }) {
   const methods = [
     {
       icon: (
@@ -9,6 +9,7 @@ export default function HowToUse() {
       title: 'البحث عن مكوّن',
       description: 'اكتب اسم المكوّن بالعربية أو الإنجليزية أو رمز E-number واحصل على النتيجة فوراً.',
       link: 'ابدأ البحث',
+      onClick: onSearchClick,
     },
     {
       icon: (
@@ -19,6 +20,7 @@ export default function HowToUse() {
       title: 'تحليل قائمة المكونات',
       description: 'الصق قائمة المكونات كاملة من غلاف المنتج ونحلّلها لك ونعطيك الحكم الشامل.',
       link: 'جرّب التحليل',
+      onClick: onAnalyzeClick,
     },
     {
       icon: (
@@ -30,6 +32,7 @@ export default function HowToUse() {
       title: 'مسح الباركود',
       description: 'وجّه الكاميرا نحو باركود المنتج واحصل على تحليل فوري لجميع مكوناته.',
       link: 'امسح منتج',
+      onClick: onBarcodeClick,
     },
   ];
 
@@ -60,12 +63,15 @@ export default function HowToUse() {
               </div>
               <h3 className="font-bold text-gray-900 text-xl mb-4">{method.title}</h3>
               <p className="text-base text-gray-500 leading-relaxed mb-6">{method.description}</p>
-              <span className="inline-flex items-center gap-1.5 text-emerald-600 text-sm font-bold group-hover:gap-2.5 transition-all">
+              <button
+                onClick={method.onClick}
+                className="inline-flex items-center gap-1.5 text-emerald-600 text-sm font-bold group-hover:gap-2.5 transition-all cursor-pointer hover:text-emerald-700 bg-transparent border-none"
+              >
                 {method.link}
                 <svg className="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </span>
+              </button>
             </div>
           ))}
         </div>

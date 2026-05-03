@@ -26,7 +26,7 @@ export default function Header({ onPricingClick, currentPlan, onFavoritesClick, 
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1 sm:gap-2">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-10">
             <NavLink href="#" label="الرئيسية" active />
             <NavLink href="#features" label="المميزات" onClick={onFeaturesClick} />
             <NavLink href="#how-to-use" label="كيف يعمل" />
