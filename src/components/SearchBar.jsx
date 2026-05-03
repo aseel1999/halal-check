@@ -3,7 +3,7 @@ export default function SearchBar({ value, onChange, disabled }) {
   const categories = ['مستحلبات', 'ملونات', 'محليات', 'مواد حافظة', 'منكهات'];
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-6 mb-6 shadow-sm">
+    <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-6 mb-6 shadow-sm text-right">
       {/* Search Input */}
       <div className="relative">
         <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">

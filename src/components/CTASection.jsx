@@ -1,7 +1,7 @@
 export default function CTASection({ onScrollToSearch }) {
   return (
-    <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
         <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-3xl p-10 sm:p-16 text-center text-white relative overflow-hidden">
           {/* Decorative circles */}
           <div className="absolute top-0 left-0 w-40 h-40 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>

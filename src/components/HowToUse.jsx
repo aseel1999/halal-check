@@ -34,7 +34,7 @@ export default function HowToUse() {
   ];
 
   return (
-    <section id="how-to-use" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
+    <section id="how-to-use" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-sm font-bold px-4 py-2 rounded-full mb-5">

@@ -13,7 +13,7 @@ export default function Header({ onPricingClick, currentPlan, onFavoritesClick, 
   return (
     <header className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group">
             <div className="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
@@ -26,7 +26,7 @@ export default function Header({ onPricingClick, currentPlan, onFavoritesClick, 
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-3">
             <NavLink href="#" label="الرئيسية" active />
             <NavLink href="#features" label="المميزات" onClick={onFeaturesClick} />
             <NavLink href="#how-to-use" label="كيف يعمل" />
@@ -113,7 +113,7 @@ function NavLink({ href, label, active, onClick }) {
     <a
       href={href}
       onClick={(e) => { if (onClick) { e.preventDefault(); onClick(); } }}
-      className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+      className={`px-4 py-2.5 rounded-lg text-base font-semibold transition-colors ${
         active
           ? 'text-emerald-700 bg-emerald-50'
           : 'text-gray-600 hover:text-emerald-600 hover:bg-emerald-50/50'

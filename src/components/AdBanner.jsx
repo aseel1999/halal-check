@@ -1,6 +1,6 @@
 export default function AdBanner() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 my-6">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 my-8">
       <div className="bg-gray-50 border border-gray-100 rounded-2xl p-4 text-center">
         <div className="bg-white rounded-xl p-6 border border-dashed border-gray-200 flex flex-col items-center gap-2">
           <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

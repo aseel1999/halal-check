@@ -21,7 +21,7 @@ export default function BrowseByStatus({ onSearch }) {
   ];
 
   return (
-    <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">

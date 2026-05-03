@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-16 pb-12 sm:pt-20 sm:pb-14">
+    <section className="relative overflow-hidden pt-20 pb-16 sm:pt-28 sm:pb-20">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/40 to-transparent"></div>
       
