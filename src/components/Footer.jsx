@@ -52,7 +52,9 @@ export default function Footer() {
               <FooterLink href="#" label="قصتنا" />
               <FooterLink href="#" label="الأسئلة الشائعة" />
               <FooterLink href="#" label="تواصل معنا" />
-              <FooterLink href="#" label="سياسة الخصوصية" />
+              <FooterLink href="/privacy.html" label="سياسة الخصوصية" />
+              <FooterLink href="/terms.html" label="شروط الخدمة" />
+              <FooterLink href="/refund.html" label="سياسة الاسترداد" />
             </ul>
           </div>
 
@@ -86,6 +88,11 @@ export default function Footer() {
           <p className="text-xs sm:text-sm text-gray-500">
             صُنع بـ ❤️ لخدمة المسلمين حول العالم
           </p>
+          <div className="flex flex-wrap justify-center gap-4 mt-2">
+            <a href="/terms.html" className="text-xs text-gray-400 hover:text-emerald-600 transition-colors">شروط الخدمة</a>
+            <a href="/privacy.html" className="text-xs text-gray-400 hover:text-emerald-600 transition-colors">سياسة الخصوصية</a>
+            <a href="/refund.html" className="text-xs text-gray-400 hover:text-emerald-600 transition-colors">سياسة الاسترداد</a>
+          </div>
         </div>
       </div>
     </footer>

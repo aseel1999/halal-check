@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الأسعار والباقات — حلال تشيك</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      direction: rtl;
+      line-height: 1.8;
+    }
+    .header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 16px 24px;
+      text-align: center;
+    }
+    .header a {
+      color: #10b981;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .header a:hover { color: #059669; }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      color: #6b7280;
+      font-size: 16px;
+      margin-bottom: 48px;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .plan-card {
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .plan-card.featured {
+      border-color: #10b981;
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+    }
+    .badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #10b981;
+      color: white;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .plan-name {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .plan-price {
+      font-size: 36px;
+      font-weight: 800;
+      color: #059669;
+      margin-bottom: 4px;
+    }
+    .plan-period {
+      color: #9ca3af;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 28px;
+      text-align: right;
+    }
+    .features-list li {
+      padding: 8px 0;
+      font-size: 15px;
+      color: #374151;
+      border-bottom: 1px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .features-list li:last-child { border-bottom: none; }
+    .check { color: #10b981; font-weight: bold; }
+    .plan-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Cairo', sans-serif;
+    }
+    .btn-outline {
+      background: white;
+      color: #10b981;
+      border: 2px solid #10b981;
+    }
+    .btn-outline:hover { background: #ecfdf5; }
+    .btn-primary {
+      background: #10b981;
+      color: white;
+    }
+    .btn-primary:hover { background: #059669; }
+    .btn-purple {
+      background: #7e22ce;
+      color: white;
+    }
+    .btn-purple:hover { background: #6b21a8; }
+    .footer {
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid #e5e7eb;
+      color: #9ca3af;
+      font-size: 14px;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 32px;
+      color: #10b981;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .back-link:hover { color: #059669; text-decoration: underline; }
+    .guarantee {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background: #ecfdf5;
+      border-radius: 12px;
+      color: #059669;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="/">☪ حلال تشيك</a>
+  </div>
+
+  <div class="container">
+    <h1>الأسعار والباقات</h1>
+    <p class="subtitle">اختر الباقة المناسبة لاحتياجاتك — ابدأ مجاناً وترقّى حسب حاجتك</p>
+
+    <div class="plans">
+      <!-- Free Plan -->
+      <div class="plan-card">
+        <div class="plan-name">🆓 المجانية</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-period">مجاناً للأبد</div>
+        <ul class="features-list">
+          <li><span class="check">✓</span> 5 عمليات بحث يومياً</li>
+          <li><span class="check">✓</span> 5 عمليات تحليل يومياً</li>
+          <li><span class="check">✓</span> قاعدة بيانات 137 مكوّن</li>
+          <li><span class="check">✓</span> نتائج فورية</li>
+        </ul>
+        <a href="/" class="plan-btn btn-outline">ابدأ مجاناً</a>
+      </div>
+
+      <!-- Pro Plan -->
+      <div class="plan-card featured">
+        <div class="badge">الأكثر طلباً</div>
+        <div class="plan-name">👑 المميزة</div>
+        <div class="plan-price">$4.99</div>
+        <div class="plan-period">شهرياً</div>
+        <ul class="features-list">
+          <li><span class="check">✓</span> بحث غير محدود</li>
+          <li><span class="check">✓</span> 20 تحليل يومياً</li>
+          <li><span class="check">✓</span> مسح الباركود بالكاميرا</li>
+          <li><span class="check">✓</span> حفظ المكونات المفضلة</li>
+          <li><span class="check">✓</span> مشاركة النتائج</li>
+          <li><span class="check">✓</span> بدون إعلانات</li>
+        </ul>
+        <a href="/" class="plan-btn btn-primary">اشترك الآن</a>
+      </div>
+
+      <!-- Business Plan -->
+      <div class="plan-card">
+        <div class="plan-name">🏢 الأعمال</div>
+        <div class="plan-price">$29.99</div>
+        <div class="plan-period">شهرياً</div>
+        <ul class="features-list">
+          <li><span class="check">✓</span> كل مميزات المميزة</li>
+          <li><span class="check">✓</span> تحليل غير محدود</li>
+          <li><span class="check">✓</span> واجهة API كاملة</li>
+          <li><span class="check">✓</span> شارة "حلال معتمد"</li>
+          <li><span class="check">✓</span> دعم فني مخصص</li>
+          <li><span class="check">✓</span> مفتاح API خاص</li>
+        </ul>
+        <a href="/" class="plan-btn btn-purple">تواصل معنا</a>
+      </div>
+    </div>
+
+    <div class="guarantee">
+      🛡️ ضمان استرداد الأموال خلال 14 يوماً — <a href="/refund.html" style="color: #047857;">اقرأ سياسة الاسترداد</a>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="/" class="back-link">← العودة إلى الصفحة الرئيسية</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 حلال تشيك — جميع الحقوق محفوظة</p>
+    <p style="margin-top: 8px;">
+      <a href="/terms.html" style="color: #6b7280; margin: 0 12px;">شروط الخدمة</a>
+      <a href="/privacy.html" style="color: #6b7280; margin: 0 12px;">سياسة الخصوصية</a>
+      <a href="/refund.html" style="color: #6b7280; margin: 0 12px;">سياسة الاسترداد</a>
+    </p>
+  </div>
+</body>
+</html>
