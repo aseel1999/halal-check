@@ -142,9 +142,9 @@ function App() {
         <StatsBar />
         
         {/* Main content area */}
-        <div ref={searchRef} className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 py-20 sm:py-28 mb-32">
+        <div ref={searchRef} className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 py-20 sm:py-28 mb-32 flex flex-col items-center">
           {/* Usage Badge */}
-          <div className="mb-4 w-full">
+          <div className="mb-4 w-full flex justify-center">
             <UsageBadge 
               remainingSearches={remainingSearches} 
               searchLimit={searchLimit}
@@ -181,7 +181,7 @@ function App() {
 
           {/* Search Tab */}
           {activeTab === 'search' && (
-            <div className="animate-fade-in w-full">
+            <div className="animate-fade-in w-full flex flex-col items-center">
               <SearchBar 
                 value={searchQuery} 
                 onChange={handleSearch} 
@@ -202,7 +202,7 @@ function App() {
 
           {/* Analyze Tab */}
           {activeTab === 'analyze' && (
-            <div className="animate-fade-in w-full">
+            <div className="animate-fade-in w-full flex flex-col items-center">
               <AnalyzeSection
                 value={analyzeText}
                 onChange={setAnalyzeText}
@@ -222,7 +222,7 @@ function App() {
 
           {/* Barcode Tab */}
           {activeTab === 'barcode' && (
-            <div className="animate-fade-in w-full">
+            <div className="animate-fade-in w-full flex flex-col items-center">
               {!barcodeResult ? (
                 <BarcodeScanner
                   onScan={handleBarcodeScan}
@@ -251,7 +251,7 @@ function App() {
 
           {/* API Tab */}
           {activeTab === 'api' && canUseApi && (
-            <div className="animate-fade-in w-full">
+            <div className="animate-fade-in w-full flex flex-col items-center">
               <APISection />
             </div>
           )}

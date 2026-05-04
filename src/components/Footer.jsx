@@ -38,10 +38,10 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-sm mb-4 text-gray-900">المنتج</h4>
             <ul className="space-y-2.5">
-              <FooterLink href="#" label="البحث عن المكونات" />
-              <FooterLink href="#" label="تحليل القوائم" />
-              <FooterLink href="#" label="مسح الباركود" />
-              <FooterLink href="#pricing" label="الأسعار" />
+              <FooterLink href="/#search" label="البحث عن المكونات" />
+              <FooterLink href="/#search" label="تحليل القوائم" />
+              <FooterLink href="/#search" label="مسح الباركود" />
+              <FooterLink href="/pricing.html" label="الأسعار" />
             </ul>
           </div>
 
@@ -49,11 +49,10 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-sm mb-4 text-gray-900">الشركة</h4>
             <ul className="space-y-2.5">
-              <FooterLink href="#" label="قصتنا" />
-              <FooterLink href="#" label="الأسئلة الشائعة" />
-              <FooterLink href="#" label="تواصل معنا" />
-              <FooterLink href="/privacy.html" label="سياسة الخصوصية" />
+              <FooterLink href="/#features" label="من نحن" />
+              <FooterLink href="/#how-to-use" label="كيف يعمل" />
               <FooterLink href="/terms.html" label="شروط الخدمة" />
+              <FooterLink href="/privacy.html" label="سياسة الخصوصية" />
               <FooterLink href="/refund.html" label="سياسة الاسترداد" />
             </ul>
           </div>
@@ -62,18 +61,18 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-sm mb-4 text-gray-900">أدلة ومقالات</h4>
             <ul className="space-y-2.5">
-              <FooterLink href="#" label="دليل E-codes الحلال" />
-              <FooterLink href="#" label="هل E471 حلال؟" />
-              <FooterLink href="#" label="الجيلاتين: حلال أم حرام؟" />
-              <FooterLink href="#" label="كيف تقرأ ملصقات الطعام" />
+              <FooterLink href="/#browse" label="دليل E-codes الحلال" />
+              <FooterLink href="/#browse" label="هل E471 حلال؟" />
+              <FooterLink href="/#browse" label="الجيلاتين: حلال أم حرام؟" />
+              <FooterLink href="/#browse" label="كيف تقرأ ملصقات الطعام" />
             </ul>
           </div>
         </div>
 
         {/* Disclaimer */}
         <div className="border-t border-gray-200 pt-6 mb-6">
-          <div className="bg-gray-50 rounded-xl p-4">
-            <h4 className="text-sm font-bold text-amber-600 mb-2">تنويه مهم</h4>
+          <div className="bg-gray-50 rounded-xl p-5 max-w-2xl mx-auto text-center">
+            <h4 className="text-sm font-bold text-amber-600 mb-2">⚠️ تنويه مهم</h4>
             <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
               هذا التطبيق أداة استرشادية وليس فتوى شرعية رسمية. للحالات الخاصة والمعقدة، يُرجى الرجوع إلى العلماء المختصين والهيئات الشرعية المعتمدة في بلدك.
             </p>

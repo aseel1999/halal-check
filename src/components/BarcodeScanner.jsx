@@ -40,9 +40,7 @@ export default function BarcodeScanner({ onScan, onClose, isPro }) {
     startScanner();
 
     return () => {
-      if (scannerRef.current) {
-        scannerRef.current.stop().catch(() => {});
-      }
+      stopScanner();
     };
   }, [isPro, onScan]);
 
@@ -52,9 +50,35 @@ export default function BarcodeScanner({ onScan, onClose, isPro }) {
     }
   };
 
+  const stopScanner = () => {
+    if (scannerRef.current) {
+      try {
+        const state = scannerRef.current.getState();
+        if (state === 2) {
+          scannerRef.current.stop().then(() => {
+            scannerRef.current.clear();
+            scannerRef.current = null;
+          }).catch(() => {
+            scannerRef.current = null;
+          });
+        } else {
+          scannerRef.current = null;
+        }
+      } catch {
+        try {
+          scannerRef.current.stop().catch(() => {});
+        } catch {
+          // ignore
+        }
+        scannerRef.current = null;
+      }
+    }
+    setScanning(false);
+  };
+
   if (!isPro) {
     return (
-      <div className="glass-strong rounded-2xl shadow-xl shadow-gray-200/50 p-6 mb-6 text-center">
+      <div className="glass-strong rounded-2xl shadow-xl shadow-gray-200/50 p-6 mb-6 text-center w-full max-w-2xl mx-auto">
         <div className="w-16 h-16 bg-gradient-to-bl from-amber-400 to-amber-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg mx-auto mb-4">
           📷
         </div>
@@ -70,7 +94,7 @@ export default function BarcodeScanner({ onScan, onClose, isPro }) {
   }
 
   return (
-    <div className="glass-strong rounded-2xl shadow-xl shadow-gray-200/50 p-6 mb-6">
+    <div className="glass-strong rounded-2xl shadow-xl shadow-gray-200/50 p-6 mb-6 w-full max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-bl from-blue-400 to-blue-600 rounded-xl flex items-center justify-center text-white text-lg shadow-md shadow-blue-200">
@@ -83,16 +107,14 @@ export default function BarcodeScanner({ onScan, onClose, isPro }) {
         </div>
         <button
           onClick={() => {
-            if (scannerRef.current) {
-              scannerRef.current.stop().catch(() => {});
-              scannerRef.current = null;
-            }
-            setScanning(false);
+            stopScanner();
             onClose();
           }}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-500 cursor-pointer"
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-red-50 hover:bg-red-100 transition-colors text-red-500 hover:text-red-600 cursor-pointer border border-red-200"
         >
-          ✕
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
 
