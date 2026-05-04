@@ -142,9 +142,10 @@ function App() {
         <StatsBar />
         
         {/* Main content area */}
-        <div ref={searchRef} className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 py-20 sm:py-28 mb-32 flex flex-col items-center">
+        <div className="flex justify-center px-4 sm:px-6 relative z-10 py-20 sm:py-28 mb-32">
+        <div ref={searchRef} style={{ width: '100%', maxWidth: '640px' }}>
           {/* Usage Badge */}
-          <div className="mb-4 w-full flex justify-center">
+          <div className="mb-4">
             <UsageBadge 
               remainingSearches={remainingSearches} 
               searchLimit={searchLimit}
@@ -181,7 +182,7 @@ function App() {
 
           {/* Search Tab */}
           {activeTab === 'search' && (
-            <div className="animate-fade-in w-full flex flex-col items-center">
+            <div className="animate-fade-in">
               <SearchBar 
                 value={searchQuery} 
                 onChange={handleSearch} 
@@ -202,7 +203,7 @@ function App() {
 
           {/* Analyze Tab */}
           {activeTab === 'analyze' && (
-            <div className="animate-fade-in w-full flex flex-col items-center">
+            <div className="animate-fade-in">
               <AnalyzeSection
                 value={analyzeText}
                 onChange={setAnalyzeText}
@@ -222,7 +223,7 @@ function App() {
 
           {/* Barcode Tab */}
           {activeTab === 'barcode' && (
-            <div className="animate-fade-in w-full flex flex-col items-center">
+            <div className="animate-fade-in">
               {!barcodeResult ? (
                 <BarcodeScanner
                   onScan={handleBarcodeScan}
@@ -251,10 +252,11 @@ function App() {
 
           {/* API Tab */}
           {activeTab === 'api' && canUseApi && (
-            <div className="animate-fade-in w-full flex flex-col items-center">
+            <div className="animate-fade-in">
               <APISection />
             </div>
           )}
+        </div>
         </div>
 
         {/* Ad Banner - only one, after content */}

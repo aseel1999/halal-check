@@ -78,7 +78,7 @@ export default function BarcodeScanner({ onScan, onClose, isPro }) {
 
   if (!isPro) {
     return (
-      <div className="glass-strong rounded-2xl shadow-xl shadow-gray-200/50 p-6 mb-6 text-center w-full max-w-2xl mx-auto">
+      <div className="glass-strong rounded-2xl shadow-xl shadow-gray-200/50 p-6 mb-6 text-center">
         <div className="w-16 h-16 bg-gradient-to-bl from-amber-400 to-amber-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg mx-auto mb-4">
           📷
         </div>
@@ -94,7 +94,7 @@ export default function BarcodeScanner({ onScan, onClose, isPro }) {
   }
 
   return (
-    <div className="glass-strong rounded-2xl shadow-xl shadow-gray-200/50 p-6 mb-6 w-full max-w-2xl mx-auto">
+    <div className="glass-strong rounded-2xl shadow-xl shadow-gray-200/50 p-6 mb-6">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-bl from-blue-400 to-blue-600 rounded-xl flex items-center justify-center text-white text-lg shadow-md shadow-blue-200">
