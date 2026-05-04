@@ -7,6 +7,9 @@ import ResultsPanel from './components/ResultsPanel';
 import AnalysisResults from './components/AnalysisResults';
 import StatsBar from './components/StatsBar';
 import Features from './components/Features';
+import BrowseByStatus from './components/BrowseByStatus';
+import HowToUse from './components/HowToUse';
+import CTASection from './components/CTASection';
 import PricingSection from './components/PricingSection';
 import Footer from './components/Footer';
 import UsageBadge from './components/UsageBadge';
@@ -30,15 +33,14 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [hasAnalyzed, setHasAnalyzed] = useState(false);
 
-  // Barcode state
   const [barcodeResult, setBarcodeResult] = useState(null);
   const [barcodeAnalysis, setBarcodeAnalysis] = useState(null);
 
-  // UI state
   const [showFavorites, setShowFavorites] = useState(false);
   const [shareResult, setShareResult] = useState(null);
 
   const pricingRef = useRef(null);
+  const searchRef = useRef(null);
 
   const {
     remainingSearches,
@@ -65,6 +67,10 @@ function App() {
   const scrollToPricing = () => {
     closeUpgrade();
     pricingRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToSearch = () => {
+    searchRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleSearch = (query) => {
@@ -116,22 +122,28 @@ function App() {
     setShareResult(result);
   };
 
+  const handleBrowseSearch = (term) => {
+    setActiveTab('search');
+    handleSearch(term);
+    scrollToSearch();
+  };
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header
         onPricingClick={scrollToPricing}
         currentPlan={currentPlan}
         onFavoritesClick={() => setShowFavorites(true)}
         canUseFavorites={canUseFavorites}
+        onFeaturesClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
       />
       <main className="flex-1">
         <Hero />
         <StatsBar />
         
-        {/* Ad Banner - Free tier only */}
-        {showAds && <AdBanner />}
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 -mt-8 relative z-10">
+        {/* Main content area */}
+        <div className="flex justify-center px-4 sm:px-6 relative z-10 py-20 sm:py-28 mb-32">
+        <div ref={searchRef} style={{ width: '100%', maxWidth: '640px' }}>
           {/* Usage Badge */}
           <div className="mb-4">
             <UsageBadge 
@@ -144,54 +156,26 @@ function App() {
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex justify-center mb-6">
-            <div className="glass-strong rounded-2xl p-1.5 flex gap-1 shadow-lg flex-wrap justify-center">
-              <button
-                onClick={() => setActiveTab('search')}
-                className={`px-5 py-3 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
-                  activeTab === 'search'
-                    ? 'bg-gradient-to-l from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
-                    : 'text-gray-600 hover:text-emerald-600 hover:bg-emerald-50'
-                }`}
-              >
+          <div className="flex justify-center mb-5 w-full">
+            <div className="bg-white border border-gray-200 rounded-xl p-1 flex gap-1 shadow-sm flex-wrap justify-center">
+              <TabButton active={activeTab === 'search'} onClick={() => setActiveTab('search')} color="emerald">
                 🔍 بحث
-              </button>
-              <button
-                onClick={() => setActiveTab('analyze')}
-                className={`px-5 py-3 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
-                  activeTab === 'analyze'
-                    ? 'bg-gradient-to-l from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
-                    : 'text-gray-600 hover:text-emerald-600 hover:bg-emerald-50'
-                }`}
-              >
+              </TabButton>
+              <TabButton active={activeTab === 'analyze'} onClick={() => setActiveTab('analyze')} color="emerald">
                 📋 تحليل
-              </button>
-              <button
+              </TabButton>
+              <TabButton
+                active={activeTab === 'barcode'}
                 onClick={() => setActiveTab('barcode')}
-                className={`px-5 py-3 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
-                  activeTab === 'barcode'
-                    ? 'bg-gradient-to-l from-blue-500 to-blue-600 text-white shadow-md shadow-blue-200'
-                    : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                } ${!canUseBarcode ? 'relative' : ''}`}
+                color="emerald"
+                badge={!canUseBarcode ? 'PRO' : null}
               >
                 📷 باركود
-                {!canUseBarcode && (
-                  <span className="absolute -top-2 -left-2 bg-amber-400 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
-                    PRO
-                  </span>
-                )}
-              </button>
+              </TabButton>
               {canUseApi && (
-                <button
-                  onClick={() => setActiveTab('api')}
-                  className={`px-5 py-3 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
-                    activeTab === 'api'
-                      ? 'bg-gradient-to-l from-purple-500 to-indigo-600 text-white shadow-md shadow-purple-200'
-                      : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'
-                  }`}
-                >
+                <TabButton active={activeTab === 'api'} onClick={() => setActiveTab('api')} color="purple">
                   🔌 API
-                </button>
+                </TabButton>
               )}
             </div>
           </div>
@@ -205,7 +189,14 @@ function App() {
                 disabled={isSearchLimitReached}
               />
               {hasSearched && (
-                <ResultsPanel results={searchResults} query={searchQuery} />
+                <ResultsPanel
+                  results={searchResults}
+                  query={searchQuery}
+                  onSaveToFavorites={() => {}}
+                  canUseFavorites={canUseFavorites}
+                  onShare={() => handleShare(searchResults)}
+                  canShare={canUseWhatsapp}
+                />
               )}
             </div>
           )}
@@ -222,10 +213,9 @@ function App() {
               />
               {hasAnalyzed && analysisResult && (
                 <AnalysisResults
-                  result={analysisResult}
+                  results={analysisResult}
                   canShare={canUseWhatsapp}
-                  canFavorite={canUseFavorites}
-                  onShare={handleShare}
+                  onShare={() => handleShare(analysisResult)}
                 />
               )}
             </div>
@@ -250,10 +240,9 @@ function App() {
                   />
                   {barcodeAnalysis && (
                     <AnalysisResults
-                      result={barcodeAnalysis}
+                      results={barcodeAnalysis}
                       canShare={canUseWhatsapp}
-                      canFavorite={canUseFavorites}
-                      onShare={handleShare}
+                      onShare={() => handleShare(barcodeAnalysis)}
                     />
                   )}
                 </>
@@ -263,26 +252,46 @@ function App() {
 
           {/* API Tab */}
           {activeTab === 'api' && canUseApi && (
-            <div className="animate-fade-in -mx-4 sm:-mx-6">
+            <div className="animate-fade-in">
               <APISection />
             </div>
           )}
         </div>
+        </div>
 
-        {/* Ad Banner bottom - Free tier only */}
+        {/* Ad Banner - only one, after content */}
         {showAds && <AdBanner />}
 
+        {/* Features / Trust Section */}
         <Features />
+
+        {/* Browse by Status */}
+        <BrowseByStatus onSearch={handleBrowseSearch} />
+
+        {/* How to Use */}
+        <HowToUse
+          onSearchClick={() => { setActiveTab('search'); scrollToSearch(); }}
+          onAnalyzeClick={() => { setActiveTab('analyze'); scrollToSearch(); }}
+          onBarcodeClick={() => { setActiveTab('barcode'); scrollToSearch(); }}
+        />
+
+        {/* CTA Section */}
+        <CTASection onScrollToSearch={scrollToSearch} />
+
+        {/* Pricing */}
         <div ref={pricingRef}>
           <PricingSection onActivatePlan={activatePlan} currentPlan={currentPlan} />
         </div>
       </main>
+
       <Footer />
 
       {/* Modals */}
-      {showUpgrade && (
-        <UpgradeModal onClose={closeUpgrade} onScrollToPricing={scrollToPricing} />
-      )}
+      <UpgradeModal
+        isOpen={showUpgrade}
+        onClose={closeUpgrade}
+        onUpgrade={scrollToPricing}
+      />
 
       {showFavorites && (
         <FavoritesPanel onClose={() => setShowFavorites(false)} />
@@ -292,6 +301,27 @@ function App() {
         <ShareModal result={shareResult} onClose={() => setShareResult(null)} />
       )}
     </div>
+  );
+}
+
+function TabButton({ active, onClick, color, badge, children }) {
+  const colors = {
+    emerald: active ? 'bg-emerald-500 text-white shadow-sm' : 'text-gray-500 hover:text-emerald-600 hover:bg-emerald-50',
+    purple: active ? 'bg-purple-500 text-white shadow-sm' : 'text-gray-500 hover:text-purple-600 hover:bg-purple-50',
+  };
+
+  return (
+    <button
+      onClick={onClick}
+      className={`relative px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 cursor-pointer ${colors[color]}`}
+    >
+      {children}
+      {badge && (
+        <span className="absolute -top-1.5 -left-1.5 bg-amber-400 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full leading-none">
+          {badge}
+        </span>
+      )}
+    </button>
   );
 }
 

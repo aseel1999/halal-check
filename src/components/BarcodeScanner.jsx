@@ -40,9 +40,7 @@ export default function BarcodeScanner({ onScan, onClose, isPro }) {
     startScanner();
 
     return () => {
-      if (scannerRef.current) {
-        scannerRef.current.stop().catch(() => {});
-      }
+      stopScanner();
     };
   }, [isPro, onScan]);
 
@@ -50,6 +48,32 @@ export default function BarcodeScanner({ onScan, onClose, isPro }) {
     if (manualCode.trim()) {
       onScan(manualCode.trim());
     }
+  };
+
+  const stopScanner = () => {
+    if (scannerRef.current) {
+      try {
+        const state = scannerRef.current.getState();
+        if (state === 2) {
+          scannerRef.current.stop().then(() => {
+            scannerRef.current.clear();
+            scannerRef.current = null;
+          }).catch(() => {
+            scannerRef.current = null;
+          });
+        } else {
+          scannerRef.current = null;
+        }
+      } catch {
+        try {
+          scannerRef.current.stop().catch(() => {});
+        } catch {
+          // ignore
+        }
+        scannerRef.current = null;
+      }
+    }
+    setScanning(false);
   };
 
   if (!isPro) {
@@ -82,10 +106,15 @@ export default function BarcodeScanner({ onScan, onClose, isPro }) {
           </div>
         </div>
         <button
-          onClick={onClose}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-500 cursor-pointer"
+          onClick={() => {
+            stopScanner();
+            onClose();
+          }}
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-red-50 hover:bg-red-100 transition-colors text-red-500 hover:text-red-600 cursor-pointer border border-red-200"
         >
-          ✕
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
 

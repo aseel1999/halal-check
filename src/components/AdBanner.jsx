@@ -1,19 +1,15 @@
 export default function AdBanner() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 my-6">
-      <div className="bg-gradient-to-l from-gray-50 to-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-6 text-center">
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+    <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 my-24 sm:my-32">
+      <div className="bg-gray-50 border border-gray-100 rounded-2xl p-4 text-center">
+        <div className="bg-white rounded-xl p-6 border border-dashed border-gray-200 flex flex-col items-center gap-2">
+          <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
           </svg>
-          <span className="text-xs text-gray-400 font-bold">إعلان</span>
+          <p className="text-gray-300 text-xs font-medium">مساحة إعلانية</p>
         </div>
-        <div className="bg-white/60 rounded-xl p-8 mb-3">
-          <p className="text-gray-400 text-sm font-bold">مساحة إعلانية — Google AdSense</p>
-          <p className="text-gray-300 text-xs mt-1">728 × 90</p>
-        </div>
-        <p className="text-[10px] text-gray-300">
-          ترقّى للباقة المميزة للتخلّص من الإعلانات
+        <p className="text-[10px] text-gray-300 mt-2.5">
+          ترقَّ للمميزة لتجربة بدون إعلانات
         </p>
       </div>
     </div>

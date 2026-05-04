@@ -1,50 +1,123 @@
 export default function Footer() {
   return (
-    <footer id="about" className="bg-gray-900 text-white py-12 px-4 sm:px-6">
-      <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-bl from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center text-xl shadow-lg">
-                🌿
+    <footer className="bg-white text-gray-900 border-t border-gray-200">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-24 sm:py-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 text-center">
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center justify-center gap-2.5 mb-4">
+              <div className="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center">
+                <span className="text-lg">🌿</span>
               </div>
               <div>
-                <h3 className="font-bold text-lg">حلال تشيك</h3>
-                <p className="text-xs text-gray-400">HalalCheck</p>
+                <h3 className="font-bold text-sm text-gray-900">حلال تشيك</h3>
+                <p className="text-[10px] text-gray-400">HalalCheck</p>
               </div>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              أداة ذكية للتحقق من حالة المكونات الغذائية الشرعية. نسعى لمساعدة المسلمين حول العالم على اتخاذ قرارات غذائية واعية ومطمئنة.
+            <p className="text-sm text-gray-600 leading-relaxed mb-5 max-w-xs mx-auto">
+              نساعد المستهلكين المسلمين على اتخاذ قرارات غذائية مطمئنة من خلال التحقق الفوري من حالة المكونات الشرعية.
             </p>
+            {/* Social Links */}
+            <div className="flex items-center justify-center gap-3">
+              <SocialLink href="https://twitter.com" label="تويتر">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </SocialLink>
+              <SocialLink href="https://instagram.com" label="إنستغرام">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </SocialLink>
+              <SocialLink href="https://facebook.com" label="فيسبوك">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </SocialLink>
+              <SocialLink href="https://youtube.com" label="يوتيوب">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </SocialLink>
+            </div>
           </div>
-          
+
+          {/* Product Links */}
           <div>
-            <h4 className="font-bold mb-4 text-emerald-400">روابط سريعة</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-emerald-400 transition-colors">الصفحة الرئيسية</a></li>
-              <li><a href="#features" className="hover:text-emerald-400 transition-colors">المميزات</a></li>
-              <li><a href="#" className="hover:text-emerald-400 transition-colors">سياسة الخصوصية</a></li>
-              <li><a href="#" className="hover:text-emerald-400 transition-colors">تواصل معنا</a></li>
+            <h4 className="font-bold text-sm mb-4 text-gray-900">المنتج</h4>
+            <ul className="space-y-2.5">
+              <FooterLink href="/" label="البحث عن المكونات" />
+              <FooterLink href="/" label="تحليل القوائم" />
+              <FooterLink href="/" label="مسح الباركود" />
+              <FooterLink href="/pricing.html" label="الأسعار" />
             </ul>
           </div>
-          
+
+          {/* Company Links */}
           <div>
-            <h4 className="font-bold mb-4 text-emerald-400">تنويه مهم</h4>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              هذا التطبيق أداة استرشادية وليس فتوى شرعية. للحالات الخاصة، يُرجى الرجوع إلى العلماء المختصين وهيئات الرقابة الشرعية المعتمدة في بلدك.
+            <h4 className="font-bold text-sm mb-4 text-gray-900">الشركة</h4>
+            <ul className="space-y-2.5">
+              <FooterLink href="/" label="من نحن" />
+              <FooterLink href="/" label="كيف يعمل" />
+              <FooterLink href="/terms.html" label="شروط الخدمة" />
+              <FooterLink href="/privacy.html" label="سياسة الخصوصية" />
+              <FooterLink href="/refund.html" label="سياسة الاسترداد" />
+            </ul>
+          </div>
+
+          {/* Guides */}
+          <div>
+            <h4 className="font-bold text-sm mb-4 text-gray-900">أدلة ومقالات</h4>
+            <ul className="space-y-2.5">
+              <FooterLink href="/" label="دليل E-codes الحلال" />
+              <FooterLink href="/" label="هل E471 حلال؟" />
+              <FooterLink href="/" label="الجيلاتين: حلال أم حرام؟" />
+              <FooterLink href="/" label="كيف تقرأ ملصقات الطعام" />
+            </ul>
+          </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="border-t border-gray-200 pt-6 mb-6">
+          <div className="bg-gray-50 rounded-xl p-5 max-w-2xl mx-auto text-center">
+            <h4 className="text-sm font-bold text-amber-600 mb-2">⚠️ تنويه مهم</h4>
+            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+              هذا التطبيق أداة استرشادية وليس فتوى شرعية رسمية. للحالات الخاصة والمعقدة، يُرجى الرجوع إلى العلماء المختصين والهيئات الشرعية المعتمدة في بلدك.
             </p>
           </div>
         </div>
         
-        <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} حلال تشيك — جميع الحقوق محفوظة
+        {/* Bottom */}
+        <div className="border-t border-gray-200 pt-5 flex flex-col items-center gap-2 text-center">
+          <p className="text-xs sm:text-sm text-gray-500">
+            © {new Date().getFullYear()} حلال تشيك. جميع الحقوق محفوظة.
           </p>
-          <p className="text-xs text-gray-500">
-            صُنع بـ 💚 لخدمة المسلمين حول العالم
+          <p className="text-xs sm:text-sm text-gray-500">
+            صُنع بـ ❤️ لخدمة المسلمين حول العالم
           </p>
+          <div className="flex flex-wrap justify-center gap-4 mt-2">
+            <a href="/terms.html" className="text-xs text-gray-400 hover:text-emerald-600 transition-colors">شروط الخدمة</a>
+            <a href="/privacy.html" className="text-xs text-gray-400 hover:text-emerald-600 transition-colors">سياسة الخصوصية</a>
+            <a href="/refund.html" className="text-xs text-gray-400 hover:text-emerald-600 transition-colors">سياسة الاسترداد</a>
+          </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function SocialLink({ href, label, children }) {
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-emerald-500 flex items-center justify-center text-gray-500 hover:text-white transition-colors"
+    >
+      {children}
+    </a>
+  );
+}
+
+function FooterLink({ href, label }) {
+  return (
+    <li>
+      <a href={href} className="text-sm text-gray-600 hover:text-emerald-600 transition-colors">
+        {label}
+      </a>
+    </li>
   );
 }
